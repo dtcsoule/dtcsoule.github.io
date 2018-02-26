@@ -85,7 +85,7 @@ class arm {
   }
   //constructor for the following arm link(s)
   arm(arm parent, float len, float q) {
-    a1 = parent.a2.copy();
+    //a2 = parent.a2.copy();
     l = len;
     angle = q;  
     calcB();
