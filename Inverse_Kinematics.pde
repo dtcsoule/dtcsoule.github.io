@@ -1,7 +1,7 @@
 
 arm[] link = new arm[2];                    //Array named arm with 2 links
 PVector base;                               //places the location of base revolute joint
-float L = 400;                              //the lenght of the link
+float L = 120;                              //the lenght of the link
 PVector position;                           //Position of object (ball)
 PVector velocity;                           //velocity of object movement speed of ball
 
@@ -13,8 +13,8 @@ void setup() {
   position = new PVector(30, 0);            //inital position of object
   velocity = new PVector(2, 6);             //(x,y) direction of inital movement
 
-  velocity.mult(2);                         //increasews the velocity by (n) times
-  link[0] = new arm(100, 100, L, 0);        //sets link at index 0 of the array
+  velocity.mult(1);                         //increasews the velocity by (n) times
+  link[0] = new arm(10, 10, L, 0);          //sets link at index 0 of the array
 
   for (int l = 1; l < link.length; l++) {    //arm1 = new link(100, 800, 200, 0);
     link[l] = new arm(link[l-1], L, l);      // arm2 = new link(arm1,200, degrees(-PI/4));
@@ -23,10 +23,10 @@ void setup() {
 }
 
 void draw() {
-  background(44);
+  background(80);
   noStroke(); 
   fill(#000000);                              //hex code for color black
-  ellipse(width/2, height/2, 150, 150);       //(x,y, size, size) 
+  ellipse(width/2, height/2, 50, 50);         //(x,y, size, size) 
 
   //
   int total = link.length;                  
@@ -39,7 +39,7 @@ void draw() {
   position.add(velocity);                       // movement on the object
   noStroke();                                   //no outline around ellipse
   fill(#FF00FF);                                //hex color of ellipse fuchsia
-  ellipse(position.x, position.y, 80, 80);
+  ellipse(position.x, position.y, 20, 20);
 
   //changes movement of the object direction 
   //with a bounce in the window
@@ -79,7 +79,7 @@ class arm {
   }
   //constructor for the following arm link(s)
   arm(arm parent, float len, float q) {
-    //a2 = parent.a2.copy();
+    a2 = parent.a2.copy();
     l = len;
     angle = q;  
     calcB();
@@ -123,7 +123,7 @@ class arm {
   // The Links physical properties
   void show() {
     stroke(255, 200);                 //Link color
-    strokeWeight(50);                 //Link thickness
+    strokeWeight(20);                 //Link thickness
     line(a1.x, a1.y, a2.x, a2.y);     //Position of links
   }
 }
