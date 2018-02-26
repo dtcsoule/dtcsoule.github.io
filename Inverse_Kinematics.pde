@@ -1,11 +1,3 @@
-/* @pjs preload="file1.png","file2.png","file3.jgp"; */
-
-/*
-*  Inverse Kinematics
-*  464 Robotics 
-*  By: Dana Soule 
-*/
-
 
 arm[] link = new arm[2];                    //Array named arm with 2 links
 PVector base;                               //places the location of base revolute joint
@@ -16,7 +8,7 @@ PVector velocity;                           //velocity of object movement speed 
 
 
 void setup() {
-  size (2300, 1800);                        //defines the dimension of display window width and hight of pixels
+  size (800, 600);                        //defines the dimension of display window width and hight of pixels
 
   position = new PVector(30, 0);            //inital position of object
   velocity = new PVector(2, 6);             //(x,y) direction of inital movement
