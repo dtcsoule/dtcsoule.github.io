@@ -1,3 +1,5 @@
+/* @pjs preload="file1.png","file2.png","file3.jgp"; */
+
 /*
 *  Inverse Kinematics
 *  464 Robotics 
@@ -85,7 +87,7 @@ class arm {
   }
   //constructor for the following arm link(s)
   arm(arm parent, float len, float q) {
-    a1 = parent.a2.copy();
+    //a2 = parent.a2.copy();
     l = len;
     angle = q;  
     calcB();
