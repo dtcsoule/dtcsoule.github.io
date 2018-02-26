@@ -1,21 +1,67 @@
 <!DOCTYPE html>
-<html>
- <title> 
-  Inverse Kinematics
- </title>
-  <head>
-   <script type="text/javascript" src="processing.js"></script>
-   <style type = "text/css">
-   #theCanvas {
 
-   width: 500px;
-   margin: auto;
-   border: 5px solid black;
-   display: block;
-   
-   }
-  </head>
-  <body>
-   <canvas id="theCanvas" data-processing-sources="Inverse_Kinematics.pde"></canvas>
-  </body>
+<html>
+	<head>
+		<title>Processing on the Web</title>
+		<script type="text/javascript" src="processing.js"></script>
+		<style type="text/css">
+			pre {
+				background-color: #EEE;
+				padding: 15px;
+			}
+			
+			#theCanvas {
+				width: 500px;
+				margin: auto;
+				border: 5px solid black;
+				display: block;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<h1>How to embed a Processing sketch onto an HTML page</h1>
+		
+		<p>With the release of <a href="http://processingjs.org/" target="_blank">ProcessingJS</a> it has become relatively easy to share your Processing programs on the web.  The process works by compiling your Java code into JavaScript and then rendering the output using the HTML5 canvas element in the browser.  The result is a web-based version of your sketch that is rendered without any plugins -- this means that your program will be accessible in any modern browser, including on mobile devices!</p>
+		
+		<h3>Before you start: Preparing your source code</h3>
+		
+		<p>If you've been working in Eclipse you have to make some minor adjustments to your Processing source code before you can render it on the web.  Here's how to get started:</p>
+		
+		<ul>
+			<li>Create a new text file to hold your source code.  Use any text editor (TextEdit on the Mac or Notepad on the PC).</li>
+			<li>Copy the code from your main class into this new source code file.  Remove any import statements (Processing on the web won't work with any imported Java libraries).  Also remove the class block - your code should be "loose" and not contained with a block of execution</li>
+			
+			<li>If you have multiple classes / files you can simply paste them into your newly created text file AFTER your main class, making sure not to mess up the braces for each class.  If you have any classes that were organized into packages you should place them into this file as well. Change all "public class" declarations to just "class" and remove any import statements.</li>
+			<li>Save your file as plain text using the "pde" file extension - i.e. ."myProgram.pde"
+		</ul>	
+		
+		<p><a href="myProgram.pde">Here's a sample of what your code should look like</a></p>
+
+		
+		<p>Now we can embed the code into a web page by doing the following:</p>
+		
+		
+		<ul>
+			<li>Create a new HTML document</li>
+			<li>Place a copy of your Processing PDE file into the same folder as your HTML document.  In this example our PDE file is named "myProgram.pde"</li>
+			<li>Place a copy of the <a href="processing.js" target="_blank">processing.js</a> library file into the same folder as your HTML document.  You can get a copy of this file from the processingjs.org website</li>
+			<li>In the head of your document, place the following code to load in the processingjs library:
+<pre>
+&lt;script type="text/javascript" src="processing.js"&gt;&lt;/script&gt;
+</pre></li>
+			<li>In the body of your document create a canvas tag that references your PDE file, like this:
+<pre>
+&lt;canvas data-processing-sources="myProgram.pde"&gt;&lt;/canvas&gt;
+</pre></li></ul>
+
+		<p>Here's a live example (click and hold your mouse to release some colored balls)</p>
+		
+		<canvas id="theCanvas" data-processing-sources="myProgram.pde"></canvas>
+		
+		<p>If you are planning on using external artwork you will need to upload your assets to your website along with your PDE source code file. Then add the following "preloader" directive at the top of your sketch as a comment - this will tell ProcessingJS to have the files available when your sketch begins running.</p>
+		
+		<pre>/* @pjs preload="file1.png","file2.png","file3.jgp"; */</pre>
+		
+	</body>
 </html>
