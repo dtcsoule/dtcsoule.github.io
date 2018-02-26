@@ -105,7 +105,7 @@ class arm {
 
   //sets a1 to copy what a2 end position is doing 
   void setA(PVector position) {
-   // a1 = position.copy(); 
+   a1 = position; 
     calcB();
   }  
 
